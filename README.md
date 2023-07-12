@@ -2,7 +2,7 @@
 
 > A Realtime clock :clock12: inspired for a project, uses `moment.js` and `jQuery`
 
-> The live github hosted page [link](hytps://saikiasan.github.io/realtime-clock)
+> The live github hosted page [link](https://saikiasan.github.io/realtime-clock)
 
 > **Moment.js** is a javascript library for retrieving time with the help of your **IP** adress
 
