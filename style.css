@@ -1,4 +1,4 @@
-body { font-size:62.5%; margin:1em; background:#232425 }
+body { font-size:62.5%; margin:1em; background:#232425;margin-top: 30vh; }
 ul { list-style:none; margin:0; padding:0 }
 #watch { font-size:1em; position:relative }
 #watch .frame-face {
@@ -46,7 +46,7 @@ ul { list-style:none; margin:0; padding:0 }
   display:block;
   width:.2em;
   height:.6em;
-  background:#ff0000;
+  background:#1b1919;
   position:absolute;
   top:50%; left:50%;
   margin:-.4em 0 0 -.1em;
@@ -230,13 +230,13 @@ ul { list-style:none; margin:0; padding:0 }
   left:-.35em; bottom:-3em;
 }
 #watch .digital-wrap {
-  width:9em;
+  width:12em;
   height:3em;
   border:.1em solid #222;
   border-radius:.5em;
   position:absolute;
   top:50%; left:50%;
-  margin:3em 0 0 -4.5em;
+  margin:3em 0 0 -6em;
   overflow:hidden;
   background:#4c4c4c;
   background:-webkit-linear-gradient(top, #4c4c4c 0%,#0f0f0f 100%);
@@ -261,13 +261,4 @@ ul { list-style:none; margin:0; padding:0 }
   text-align:center;
   position:relative;
   left:1px;
-}
-#watch .digit-minutes li {
-  animation:dsm 3600s steps(60, end) 0s infinite;
-}
-/* #watch .digit-seconds li {
-  animation:dsm 60s steps(60, end) 0s infinite;
-} */
-@keyframes dsm {
-  to { transform:translateY(-120em) }
 }

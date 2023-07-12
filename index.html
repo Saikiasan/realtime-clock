@@ -1,23 +1,65 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Real-Time Clock</title>
-<link rel="stylesheet" href="style.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://momentjs.com/downloads/moment.min.js"></script>
+  <title>Real-Time Clock</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://momentjs.com/downloads/moment.min.js"></script>
 </head>
+
 <body>
   <div id="watch">
     <div class="frame-face"></div>
     <ul class="minute-marks">
-      <li></li><li></li><li></li><li></li><li></li><li></li>
-      <li></li><li></li><li></li><li></li><li></li><li></li>
-      <li></li><li></li><li></li><li></li><li></li><li></li>
-      <li></li><li></li><li></li><li></li><li></li><li></li>
-      <li></li><li></li><li></li><li></li><li></li><li></li>
-      <li></li><li></li><li></li><li></li><li></li><li></li>
-      <li></li><li></li><li></li><li></li><li></li><li></li>
-      <li></li><li></li><li></li><li></li><li></li><li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
     </ul>
     <div class="digital-wrap">
       <ul class="digit-hours">
@@ -29,47 +71,76 @@
       <ul class="digit-seconds">
         <li></li>
       </ul>
+      <ul class="ampm">
+        <li></li>
+      </ul>
     </div>
     <ul class="digits">
-      <li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li>
-      <li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+      <li>11</li>
+      <li>12</li>
     </ul>
     <div class="hours-hand"></div>
     <div class="minutes-hand"></div>
     <div class="seconds-hand"></div>
   </div>
-<script>
-$(document).ready(function() {
-var clock = $("#clock");
-var moment = window.moment;
-function updateClock() {
-var currentTime = moment();
-var sec = currentTime.format("ss")
-var min = currentTime.format("mm")
-var hrs = currentTime.format("HH")
-// var min = 50;
-// var sec = 40;
-clock.html(currentTime.format("HH:mm:ss"));
-var digisec = $('.digit-seconds li');
-var digimins = $('.digit-minutes li');
-var digihrs = $('.digit-hours li');
-const hrshand = $('.hours-hand')
-const minhand= $('.minutes-hand');
-const sechand = $('.seconds-hand');
-var hrsdeg = (hrs/60)*360 ;
-var secdeg = (sec/60)*360 ;
-var mindeg = (min/60)*360 ;
-hrshand.css({transform:'rotate('+hrsdeg+'deg)'})
-sechand.css({
-  transform: "rotate(" + secdeg + "deg)"
-})
-minhand.css({transform: "rotate("+mindeg+"deg)"})
-digimins.text(min)
-digisec.text(sec)
-digihrs.text(hrs)
-}
-setInterval(updateClock, 1000);
-});
-</script>
+  <script>
+    jQuery(function () {
+      var moment = window.moment;
+
+      function updateClock() {
+        var currentTime = moment();
+        var sec = currentTime.format("ss")
+        var min = currentTime.format("mm")
+        var hrs = currentTime.format("HH")
+        var hrs12 = moment(hrs, 'HH').format('h')
+        var ap = currentTime.format("A")
+        // var min = 50;
+        // var sec = 40;
+        var digisec = $('.digit-seconds li');
+        var digimins = $('.digit-minutes li');
+        var digihrs = $('.digit-hours li');
+        var ampm = $(".ampm li");
+        var hrshand = $('.hours-hand');
+        var minhand = $('.minutes-hand');
+        var sechand = $('.seconds-hand');
+
+        var hrsdeg = ((hrs12 % 12) / 12) * 360 + (min / 60) * 30;
+        var secdeg = (sec / 60) * 360;
+        var mindeg = (min / 60) * 360 + (sec / 60) * 6;
+
+        hrshand.css({
+          transform: "rotate(" + hrsdeg + "deg)"
+        })
+        sechand.css({
+          transform: "rotate(" + secdeg + "deg)"
+        });
+        minhand.css({
+          transform: "rotate(" + mindeg + "deg)"
+        })
+        digimins.text(min)
+        digisec.text(sec)
+        digihrs.text(hrs12)
+
+        // Display AM/PM indicator
+        if (ap === "AM") {
+          ampm.text("AM");
+        } else {
+          ampm.text("PM");
+        }
+      }
+      setInterval(updateClock, 1000);
+    });
+  </script>
 </body>
+
 </html>
