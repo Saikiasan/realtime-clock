@@ -2,6 +2,8 @@
 
 > A Realtime clock :clock12: inspired for a project, uses `moment.js` and `jQuery`
 
+> The live github hosted page [link](hytps://saikiasan.github.io/realtime-clock)
+
 > **Moment.js** is a javascript library for retrieving time with the help of your **IP** adress
 
 Usage of `javascript`, `css`, `html` along with the libraries- `jQuery` & `momentjs` creates an ideal:bulb: option to choose this as a project. Use the below documentation to understand the logical making of the project. 
