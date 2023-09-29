@@ -67,5 +67,9 @@ ul {
 Here are some class-lists for the clock:
 
 :ghost:| className | Description
-|---:|:---:|:---:|
-1|digital-wrap|for the digital clock numerical time values
+|---:|:---:|:---|
+1|digital-wrap|Digital clock numerical time values
+2|digits|The numerical digits of the clock indicating the time
+3|hours-hand|The watch hand for indicating the time in hour format
+4|minutes-hand|The watch hand indicating the time in minutes format
+5|seconds-hand|The watch hand indicating the time in seconds format
